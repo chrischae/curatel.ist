@@ -52,6 +52,15 @@ li {
     display: none;
 }
 
+.main-container {
+    display: flex;
+}
+.main-container > * {
+    height: 300px;
+    width: 200px;
+    border: black solid 1px;
+}
+
 /* MODAL */
 .modal {
     display: none;

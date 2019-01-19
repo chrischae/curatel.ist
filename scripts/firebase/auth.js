@@ -6,8 +6,12 @@ auth.onAuthStateChanged(user => {
 
         // Get data from firestore
         db.collection('categories').onSnapshot(snapshot => {
+            setupGuide(snapshot.docs) // sending data to setupGuides in index.js
             setupUI(user);
         });
+    } else {
+        setupUI();
+        setupGuides([]);
     }
 
 });
@@ -56,4 +60,26 @@ logout.addEventListener('click', (e) => {
     auth.signOut().then(() => {
         console.log('USER SIGNED OUT');
     });
+});
+
+// CREATE NEW INSP
+const createForm = document.querySelector('#create-form');
+createForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Only show content that is related to the logged in user.
+    let user = firebase.auth().currentUser;
+
+    db.collection('categories').add({
+        title: createForm['title'].value,
+        content: createForm['content'].value,
+        uid: user.uid
+    }).then(() => {
+        const modal = document.querySelector('#modal-create');
+        modal.style.display = "none";
+        createForm.reset();
+    }).catch(err => {
+        console.log(err.message);
+    });
+
 });

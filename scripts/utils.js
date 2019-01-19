@@ -1,11 +1,11 @@
 // COLLAPSIBLE LIST
 let collapsibleHeader = document.querySelectorAll('.collapsible-header');
 
-// console.log(collapsibleHeader);
+console.log('collapsibleHeader', collapsibleHeader);
 
 for (let i = 0; i < collapsibleHeader.length; i++) {
     collapsibleHeader[i].addEventListener('click', () => {
- 
+        console.log('Clicked Title!');
         let panel = collapsibleHeader[i].nextElementSibling;
 
         if (panel.style.display === "block") {
