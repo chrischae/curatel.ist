@@ -11,7 +11,7 @@ auth.onAuthStateChanged(user => {
         });
     } else {
         setupUI();
-        setupGuides([]);
+        setupGuide([]);
     }
 
 });
@@ -72,7 +72,9 @@ createForm.addEventListener('submit', (e) => {
 
     db.collection('categories').add({
         title: createForm['title'].value,
-        content: createForm['content'].value,
+        inspiration01: createForm['insp01'].value,
+        inspiration02: createForm['insp02'].value,
+        inspiration03: createForm['insp03'].value,
         uid: user.uid
     }).then(() => {
         const modal = document.querySelector('#modal-create');

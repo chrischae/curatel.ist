@@ -35,15 +35,17 @@ const setupGuide = (data) => {
             if (currentUser.uid == insp.uid) {
                 const div = `
                 <div>
-                    <div class="collapsible-header">${insp.title}</div>
-                    <div class="collapsible-body"">${insp.content}</div>
+                    <h3 class="collapsible-header">${insp.title}</h3>
+                    <li class="collapsible-body">${insp.inspiration01}</li>
+                    <li class="collapsible-body">${insp.inspiration02}</li>
+                    <li class="collapsible-body">${insp.inspiration03}</li>
                 </div>
                 `;
                 html += div;
             }
         });
 
-        inspirationList.innerHTML += html;
+        inspirationList.innerHTML = html;
     } else {
         inspirationList.innerHTML = '<h5>Log in to view your inspiration lists</h5>';
     }
